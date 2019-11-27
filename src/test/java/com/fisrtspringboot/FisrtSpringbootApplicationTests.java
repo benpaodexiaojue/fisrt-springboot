@@ -1,12 +1,18 @@
 package com.fisrtspringboot;
 
+
 import com.fisrtspringboot.model.AyUser;
+import com.fisrtspringboot.repository.AyUserRepository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -36,5 +42,20 @@ class FisrtSpringbootApplicationTests {
     for (AyUser ayUser : userList) {
       System.out.println("id: " + ayUser.getId() +"  name: "+ ayUser.getName());
     }
+  }
+
+  @Resource
+  private AyUserRepository ayUserRepository;
+
+  @Test
+  public void testRepository() {
+    List<AyUser> ayUsers = ayUserRepository.findAll();
+    System.out.println(ayUsers.size());
+
+    Page<AyUser> page = ayUserRepository.findAll(PageRequest.of(0, 1));
+    System.out.println(page.getTotalPages());
+    System.out.println(page.getContent().get(0).getName());
+
+
   }
 }
