@@ -3,6 +3,8 @@ package com.fisrtspringboot;
 
 import com.fisrtspringboot.model.AyUser;
 import com.fisrtspringboot.repository.AyUserRepository;
+import com.fisrtspringboot.service.AyUserService;
+import com.fisrtspringboot.service.impl.AyUserServiceImpl;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -58,4 +60,18 @@ class FisrtSpringbootApplicationTests {
 
 
   }
+
+  @Resource
+  private AyUserService ayUserService;
+
+  @Test
+  void testTransaction() {
+    AyUser ayUser = new AyUser();
+    ayUser.setId("3");
+    ayUser.setName("阿傻");
+    ayUser.setPassword("654321");
+    ayUserService.save(ayUser);
+  }
+
+
 }

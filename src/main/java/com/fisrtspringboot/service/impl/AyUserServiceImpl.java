@@ -5,6 +5,7 @@ import com.fisrtspringboot.repository.AyUserRepository;
 import com.fisrtspringboot.service.AyUserService;
 import java.util.List;
 import javax.annotation.Resource;
+import javax.transaction.Transactional;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -25,9 +26,16 @@ public class AyUserServiceImpl  implements AyUserService {
     return ayUserRepository.findAll();
   }
 
+  @Transactional
   @Override
   public AyUser save(AyUser ayUser) {
-    return ayUserRepository.save(ayUser);
+
+    AyUser savedAyUser = ayUserRepository.save(ayUser);
+    //test transaction rollback --start
+//    String name = null;
+//    name.split(";");
+    //test transaction rollback --end
+    return savedAyUser;
   }
 
   @Override
