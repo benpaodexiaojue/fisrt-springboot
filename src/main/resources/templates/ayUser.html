@@ -3,6 +3,20 @@
 <head>
   <title>hello</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <script>
+      var xmlHttp;
+      var aaa = function() {
+          xmlHttp = new XMLHttpRequest();
+          xmlHttp.open('Get','http://localhost:8080/ayUser/viewUser?id=1', true);
+          xmlHttp.send(null);
+          xmlHttp.onreadystatechange = onResponse;
+      };
+      var onResponse = function() {
+          var data = xmlHttp.responseText;
+          alert(data);
+      }
+
+  </script>
 </head>
 <body>
 
@@ -16,7 +30,7 @@
     <td th:text="${user.password}"></td>
   </tr>
 </table>
-
+<button onclick="aaa()">View</button>
 </body>
 
 </html>

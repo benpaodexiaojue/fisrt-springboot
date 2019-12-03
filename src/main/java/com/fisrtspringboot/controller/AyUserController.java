@@ -7,6 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/ayUser")
@@ -21,6 +23,13 @@ public class AyUserController {
     List<AyUser> ayUsers = ayUserService.findAll();
     model.addAttribute("users", ayUsers);
     return "ayUser";
+  }
+
+ @RequestMapping("/viewUser")
+ @ResponseBody
+  public AyUser viewUser(@RequestParam String id){
+    AyUser ayUsers = ayUserService.findById(id);
+   return ayUsers;
   }
 
 }
