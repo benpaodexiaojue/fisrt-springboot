@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 
-@WebFilter(filterName = "aiFilter", urlPatterns = "/*")
+//@WebFilter(filterName = "aiFilter", urlPatterns = "/*")
 public class AiUserFilter implements Filter {
 
   @Override

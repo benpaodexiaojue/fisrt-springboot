@@ -30,4 +30,45 @@ public class DruidConfiguration {
     return filterRegistrationBean;
   }
 
+  @Bean
+  public FilterRegistrationBean buildAFilter() {
+    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+    filterRegistrationBean.setOrder(4);
+    filterRegistrationBean.setFilter(new AiUserFilter());
+    filterRegistrationBean.setName("filter1");
+    filterRegistrationBean.addUrlPatterns("/*");
+    return filterRegistrationBean;
+  }
+
+  @Bean
+  public FilterRegistrationBean buildDFilter() {
+    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+    filterRegistrationBean.setOrder(3);
+    filterRegistrationBean.setFilter(new AyUserFilter());
+    filterRegistrationBean.setName("filter4");
+    filterRegistrationBean.addUrlPatterns("/*");
+    return filterRegistrationBean;
+  }
+
+  @Bean
+  public FilterRegistrationBean buildBFilter() {
+    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+    filterRegistrationBean.setOrder(1);
+    filterRegistrationBean.setFilter(new BFilter());
+    filterRegistrationBean.setName("filter2");
+    filterRegistrationBean.addUrlPatterns("/*");
+    return filterRegistrationBean;
+  }
+
+  @Bean
+  public FilterRegistrationBean buildCFilter() {
+    FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+    filterRegistrationBean.setOrder(2);
+    filterRegistrationBean.setFilter(new CFilter());
+    filterRegistrationBean.setName("filter3");
+    filterRegistrationBean.addUrlPatterns("/*");
+    return filterRegistrationBean;
+  }
+
+
 }
